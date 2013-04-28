@@ -28,7 +28,6 @@ class Html
   def text(text)
     text
   end
-
 end
 
 puts Html.new.text("decorate me please") # => "<b><i>decorate me please</i></b>"
@@ -51,7 +50,6 @@ class Spamer
   def spam(spam_message)
     print spam_message
   end
-
 end
 
 Spamer.new.spam("spam") # => "spamspamspam"
