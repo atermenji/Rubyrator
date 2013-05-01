@@ -26,6 +26,13 @@ class SimpleDecorator
     text
   end
 
+  private
+
+  decorate :bold
+  def text_private(text)
+    text
+  end
+
 end
 
 class ArgumentsDecorator

@@ -20,6 +20,10 @@ describe Rubyrator do
       @simple_dec.text_single_decorated("test").should eql "<b>test</b>"
     end 
 
+    it "should not change method visibility" do
+      expect { @simple_dec.text_private("test") }.to raise_error(NoMethodError)
+    end
+
   end
 
   describe ArgumentsDecorator do
