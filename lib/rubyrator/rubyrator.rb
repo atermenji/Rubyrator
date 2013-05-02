@@ -4,6 +4,19 @@ module Rubyrator
     m_decorator = instance_method(decorator)
     meth_added = method(:method_added)
 
+    define_singleton_method(:singleton_method_added) do |name|
+      if name.to_sym != :method_added && name.to_sym != :singleton_method_added
+        class << self
+          remove_method :singleton_method_added
+        end
+
+        to_decorate = method(name)
+        define_singleton_method(name) do |*args, &block|
+          m_decorator.bind(self.new).call(decorator_args, to_decorate, *args, &block)
+        end
+      end
+    end
+
     define_singleton_method(:method_added) do |name|
       to_decorate = instance_method(name)
       define_singleton_method(:method_added, &meth_added)

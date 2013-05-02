@@ -26,6 +26,11 @@ class SimpleDecorator
     text
   end
 
+  decorate :bold
+  def self.text_class_method(text)
+    text
+  end
+
   private
 
   decorate :bold
