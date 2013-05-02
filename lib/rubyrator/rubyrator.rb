@@ -1,8 +1,14 @@
 module Rubyrator 
 
   def decorate(decorator, *decorator_args)
+    decorate_class_method(decorator, *decorator_args)
+    decorate_instance_method(decorator, *decorator_args)
+  end 
+
+  private
+
+  def decorate_class_method(decorator, *decorator_args)
     m_decorator = instance_method(decorator)
-    meth_added = method(:method_added)
 
     define_singleton_method(:singleton_method_added) do |name|
       if name.to_sym != :method_added && name.to_sym != :singleton_method_added
@@ -16,6 +22,11 @@ module Rubyrator
         end
       end
     end
+  end
+
+  def decorate_instance_method(decorator, *decorator_args)
+    m_decorator = instance_method(decorator)
+    meth_added = method(:method_added)
 
     define_singleton_method(:method_added) do |name|
       to_decorate = instance_method(name)
@@ -35,6 +46,6 @@ module Rubyrator
       when :private; private name
       end
     end
-  end 
+  end
 
 end
