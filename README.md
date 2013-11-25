@@ -60,3 +60,6 @@ Spamer.new.spam("spam") # => "spamspamspam"
 Released under the MIT License.  See the [LICENSE][] file for further details.
 
 [license]: LICENSE
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/atermenji/rubyrator/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
